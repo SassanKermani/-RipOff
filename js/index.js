@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	var character = [];
 	var numberOfPlayers = 8;
 
+	var bigStartButton = true;						//nothing works if this is false
+
 
 
 	function setUp(){
@@ -221,6 +223,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 
 	drawBoard();
+
+	//the engine of the dam thing
 
 	
 
