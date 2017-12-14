@@ -7,14 +7,16 @@ document.addEventListener('DOMContentLoaded', function() {
 	var numberOfPlayers = 8;
 
 	var bigStartButton = true;						//nothing works if this is false
+	//var TheNumberofTotalTurnsYouGet = 200;		killed this feture may add it back later
 
-
+	var vewPortForTheUserOfTheBoard = document.getElementById("mainBoard");
 
 	function setUp(){
 		
 		//enforces making the board size odd
 		if ( boardSize % 2 == 0 ){
 			boardSize = boardSize + 1;
+			console.log( "boardSize " + boardSize);
 		}
 
 		//set up the board as a 2d array with its lenth
@@ -37,8 +39,8 @@ document.addEventListener('DOMContentLoaded', function() {
 				case 0:
 					character[i][0] = "@";								//car simbel for user
 					character[i][1] = 0									//car power lv to kill other cars
-					character[i][2] = Math.floor(boardSize / 2);	//car position on the x axes
-					character[i][3] = Math.floor(boardSize / 2);	//car position on the y axes
+					character[i][2] = 1//Math.floor(boardSize / 2);	//car position on the x axes
+					character[i][3] = 0//Math.floor(boardSize / 2);	//car position on the y axes
 					character[i][4] = true;								//car if alive or not 
 
 					console.log("case " + i );
@@ -47,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				//sets up 1
 				case 1:
 					character[i][0] = "0";									//car simbel for user
-					character[i][1] = -500;	//*								//car power lv to kill other cars
+					character[i][1] = -1;	//*								//car power lv to kill other cars
 					character[i][2] = Math.floor(0);	//car position on the x axes
 					character[i][3] = Math.floor(0);	//car position on the y axes
 					character[i][4] = true;									//car if alive or not 
@@ -172,7 +174,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	//handles colition 
 	function doCollision(){
 		for(let i = 0; i < boardSize; i ++){
-			for(let ii = 0 ; ii > boardSize; ii++){
+			for(let ii = 0; ii < boardSize; ii++){
 				//this is now going though everyspot 
 
 				let most = -500 								//index of largest thing at spt i = X ii = Y
@@ -183,16 +185,29 @@ document.addEventListener('DOMContentLoaded', function() {
 						if(most == -500){				//this is so you can get first carictor in there
 							most = iii;
 						}else{
-							if( character[iii][1] > character[most][0] & character[iii][4] == true  ){		//sees if new carictoris biger 
+							if( character[iii][1] > character[most][1] & character[iii][4] == true  ){		//sees if new carictoris biger 
 								
 								character[most][4] = false;		//kills smaller power lv carictor
 								most = iii;						//asines new bigest power lv carictor
-								console.log("colition hapend");
+								console.log("teast result One");
+
+							}else{
+								character[iii][4] = false;
+								console.log("teast result two");
+
+								if(character[most][0] == "@"){
+									character[most][1] = character[most][1] + 1;
+								}
+
 							}
 						}
 					}
 				}
 			}
+		}
+		//levles up player charictor 
+		for(let i = 0; i < numberOfPlayers; i++){
+
 		}
 	}
 
@@ -214,18 +229,133 @@ document.addEventListener('DOMContentLoaded', function() {
 					}
 				}
 
-				if(tempVar = false){				//if there is not a carictor
+				if(tempVar == false){				//if there is not a carictor
 					board[i][ii] = "_";				//sets to defult
 				}
 
+				//adds stuff to the vewPortForTheUserOfTheBoard 
+				vewPortForTheUserOfTheBoard.innerHTML = vewPortForTheUserOfTheBoard.innerHTML + board[i][ii];
+
 			}
+			vewPortForTheUserOfTheBoard.innerHTML = vewPortForTheUserOfTheBoard.innerHTML + " <br> ";
 		}
+		vewPortForTheUserOfTheBoard.innerHTML = vewPortForTheUserOfTheBoard.innerHTML + " <br> ";
+		vewPortForTheUserOfTheBoard.innerHTML = vewPortForTheUserOfTheBoard.innerHTML + " <br> ";
+		vewPortForTheUserOfTheBoard.innerHTML = vewPortForTheUserOfTheBoard.innerHTML + " <br> ";
 	}
 
 	drawBoard();
 
-	//the engine of the dam thing
+	//killed this feture it was taking to long i got a time table to keep might come back later for it
+	// document.getElementById("Start").addEventListener("click", theRubeGoldbergMachine);
 
+	// function theRubeGoldbergMachine(){
+
+	// 	for(let i = 0; i < TheNumberofTotalTurnsYouGet; i++){
+	// 		setTimeout( moveThings, 3000);
+	// 	}
+
+	// }
 	
+	// function moveThings(){
+	// 	window.addEventListener('keypress', function (e){
+	// 		console.log("e keycode = " + e.keycode );
+
+
+
+	// 	})
+	// }
+
+
+	//the engine of the dam thing
+	document.getElementById("Start").addEventListener("click", theRubeGoldbergMachine);
+
+	function theRubeGoldbergMachine(){
+		window.addEventListener('keypress', function (e){
+
+			console.log( "e = " + e.keyCode );
+
+			//gose up use w to do it
+			if(e.keyCode == 119 & character[0][2] != 0){
+				character[0][2] = character[0][2] + -1;
+				console.log(board);
+
+				doCollision();
+				drawBoard();
+				console.log(board);
+			}
+
+			//gose down use s to do it
+			if(e.keyCode == 115 & character[0][2]  < boardSize - 1){
+				character[0][2] = character[0][2] + 1;
+
+				doCollision();
+				drawBoard();
+				console.log(board);
+			}
+
+			//gose left use a to do it
+			if(e.keyCode == 97 & character[0][3] != 0){
+				character[0][3] = character[0][3] + -1;
+				console.log(board);
+
+				doCollision();
+				drawBoard();
+				console.log(board);
+			}
+
+			//gose right use d to do it
+			if(e.keyCode == 100 & character[0][3]  < boardSize - 1){
+				character[0][3] = character[0][3] + 1;
+
+				doCollision();
+				drawBoard();
+				console.log(board);
+			}
+
+		});
+	}	
+
+
+
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
