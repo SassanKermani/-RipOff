@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-	boardSize = 10;				//for the love of god make this nubmer odd
+	boardSize = 20;				//for the love of god make this nubmer odd
 	board = [];
 	
 	var character = [];
@@ -39,8 +39,8 @@ document.addEventListener('DOMContentLoaded', function() {
 				case 0:
 					character[i][0] = "@";								//car simbel for user
 					character[i][1] = 0									//car power lv to kill other cars
-					character[i][2] = 1//Math.floor(boardSize / 2);	//car position on the x axes
-					character[i][3] = 0//Math.floor(boardSize / 2);	//car position on the y axes
+					character[i][2] = Math.floor(boardSize / 2);	//car position on the x axes
+					character[i][3] = Math.floor(boardSize / 2);	//car position on the y axes
 					character[i][4] = true;								//car if alive or not 
 
 					console.log("case " + i );
@@ -214,6 +214,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	doCollision();
 
 	function drawBoard(){
+		vewPortForTheUserOfTheBoard.innerHTML = "";
 		for(let i = 0; i < boardSize; i++){					
 			for(let ii = 0; ii < boardSize; ii ++){
 				//gose though all spots on board
@@ -242,6 +243,36 @@ document.addEventListener('DOMContentLoaded', function() {
 		vewPortForTheUserOfTheBoard.innerHTML = vewPortForTheUserOfTheBoard.innerHTML + " <br> ";
 		vewPortForTheUserOfTheBoard.innerHTML = vewPortForTheUserOfTheBoard.innerHTML + " <br> ";
 		vewPortForTheUserOfTheBoard.innerHTML = vewPortForTheUserOfTheBoard.innerHTML + " <br> ";
+		
+		//winning logic puting it hear because you update the bord for everthing anyway this just makes it convenyent
+		
+		let titleOfThePage = document.getElementById("title");
+
+		let isThePlayerDead = false;			//is the player dead 
+		let isEveryThingEalsDead = true;		// is Every Thing Eals Dead
+
+
+		if( character[0][4] == false ){
+			isThePlayerDead = true 				//cheacks if player is dead
+		}
+
+		for(let i = 1; i < numberOfPlayers; i++){
+			if( character[i][4]   ==  true ){
+				isEveryThingEalsDead = false;			// if one is alive there not all dead
+				//console.log("ran winning logic")
+			}
+		}
+
+		if(isThePlayerDead == true){
+
+			titleOfThePage.innerHTML = "YOU LOST!";
+		
+		}
+
+		if(isEveryThingEalsDead == true){
+			titleOfThePage.innerHTML = "YOU WIN!";
+		}
+
 	}
 
 	drawBoard();
@@ -313,10 +344,40 @@ document.addEventListener('DOMContentLoaded', function() {
 				console.log(board);
 			}
 
+			aiOfTheNonPlayerPices();
 		});
+
+		
 	}	
 
+	function aiOfTheNonPlayerPices(){
+		
+		for( let i = 1; i < numberOfPlayers; i++ ){
+			if( character[0][1] < character[i][1] ){
 
+				if( Math.floor((Math.random() * 2) + 1) == 1 ){
+
+					if( character[0][2] > character[i][2] ){
+						character[i][2] = character[i][2] + 1;
+					}
+					if( character[0][2] < character[i][2] ){
+						character[i][2] = character[i][2] - 1;
+					}
+
+				}else{
+
+					if( character[0][3] > character[i][3] ){
+						character[i][3] = character[i][3] + 1;
+					}
+					if( character[0][3] < character[i][3] ){
+						character[i][3] = character[i][3] - 1;
+					}
+
+				}
+
+			}
+		}
+	};
 
 
 });
