@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-	boardSize = 20;				//for the love of god make this nubmer odd
+	boardSize = 30;				//for the love of god make this nubmer odd
 	board = [];
 	
 	var character = [];
-	var numberOfPlayers = 8;
+	var numberOfPlayers = 10;
 
 	var bigStartButton = true;						//nothing works if this is false
 	//var TheNumberofTotalTurnsYouGet = 200;		killed this feture may add it back later
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 			for(let ii = 0; ii < boardSize; ii++){
 				
-				board[i][ii] = "_"			//sets board sopots  to smothing not distarcting
+				board[i][ii] = "__"			//sets board sopots  to smothing not distarcting
 
 			}
 		}
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 				//sets up 1
 				case 1:
-					character[i][0] = "0";									//car simbel for user
+					character[i][0] = ".0.";									//car simbel for user
 					character[i][1] = -1;	//*								//car power lv to kill other cars
 					character[i][2] = Math.floor(0);	//car position on the x axes
 					character[i][3] = Math.floor(0);	//car position on the y axes
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 				//sets up 1
 				case 2:
-					character[i][0] = "1";									//car simbel for user
+					character[i][0] = ".1.";									//car simbel for user
 					character[i][1] = 1;									//car power lv to kill other cars
 					character[i][2] = Math.floor(0);			//car position on the x axes
 					character[i][3] = Math.floor(boardSize  -1);		//car position on the y axes
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				
 				//sets up 2
 				case 3:
-					character[i][0] = "2";									//car simbel for user
+					character[i][0] = ".2.";									//car simbel for user
 					character[i][1] = 2;									//car power lv to kill other cars
 					character[i][2] = Math.floor(boardSize - 1);		//car position on the x axes
 					character[i][3] = Math.floor(0);			//car position on the y axes
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 				//sets up 3
 				case 4:
-					character[i][0] = "3";									//car simbel for user
+					character[i][0] = ".3.";									//car simbel for user
 					character[i][1] = 3;									//car power lv to kill other cars
 					character[i][2] = Math.floor(boardSize - 1);		//car position on the x axes
 					character[i][3] = Math.floor(boardSize - 1);		//car position on the y axes
@@ -92,22 +92,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
 				//sets up 4
 				case 5:
-					character[i][0] = "4";									//car simbel for user
+					character[i][0] = ".4.";									//car simbel for user
 					character[i][1] = 4;									//car power lv to kill other cars
-					character[i][2] = 0;									//car position on the x axes
+					character[i][2] = Math.floor(boardSize / 2);			//car position on the x axes
 					character[i][3] = 0;									//car position on the y axes
-					character[i][4] = false;									//car if alive or not 
+					character[i][4] = true;									//car if alive or not 
 
 					console.log("case " + i );
 					break;
 
 				//sets up 5
 				case 6:
-					character[i][0] = "5";									//car simbel for user
+					character[i][0] = ".5.";									//car simbel for user
 					character[i][1] = 5;									//car power lv to kill other cars
 					character[i][2] = 0;									//car position on the x axes
-					character[i][3] = boardSize - 1;							//car position on the y axes
-					character[i][4] = false;									//car if alive or not 
+					character[i][3] = Math.floor(boardSize / 2);							//car position on the y axes
+					character[i][4] = true;									//car if alive or not 
 
 					console.log("case " + i );
 					break;
@@ -115,22 +115,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
 				//sets up 6
 				case 7:
-					character[i][0] = "6";									//car simbel for user
+					character[i][0] = ".6.";									//car simbel for user
 					character[i][1] = 6;									//car power lv to kill other cars
-					character[i][2] = 0;									//car position on the x axes
-					character[i][3] = Math.floor(boardSize / 2) + 1;		//car position on the y axes
-					character[i][4] = false;									//car if alive or not 
+					character[i][2] = Math.floor(boardSize / 2);									//car position on the x axes
+					character[i][3] = Math.floor(boardSize - 1);		//car position on the y axes
+					character[i][4] = true;									//car if alive or not 
 
 					console.log("case " + i );
 					break;
 
 				//sets up 7
 				case 8:
-					character[i][0] = "7";									//car simbel for user
+					character[i][0] = ".7.";									//car simbel for user
 					character[i][1] = 7;									//car power lv to kill other cars
-					character[i][2] = boardSize - 1;						//car position on the x axes
-					character[i][3] = Math.floor(boardSize / 2) + 1;		//car position on the y axes
-					character[i][4] = false;									//car if alive or not 
+					character[i][2] = Math.floor(boardSize - 1);;						//car position on the x axes
+					character[i][3] = Math.floor(boardSize / 2);						//car position on the y axes
+					character[i][4] = true;									//car if alive or not 
 
 					console.log("case " + i );
 					break;
@@ -171,7 +171,43 @@ document.addEventListener('DOMContentLoaded', function() {
 	setUp();		//calls the funcion for seting up the game
 
 
-	//handles colition 
+	//handles colition  ORIGINAL
+	// function doCollision(){
+	// 	for(let i = 0; i < boardSize; i ++){
+	// 		for(let ii = 0; ii < boardSize; ii++){
+	// 			//this is now going though everyspot 
+
+	// 			let most = -500 								//index of largest thing at spt i = X ii = Y
+
+	// 			for(let iii = 0; iii < numberOfPlayers; iii++){
+
+	// 				if ( character[iii][2] == i  &  character[iii][3] == ii & character[iii][4] == true ){	//gets first carictor in there
+	// 					if(most == -500){				//this is so you can get first carictor in there
+	// 						most = iii;
+	// 					}else{
+	// 						if( character[iii][1] > character[most][1] & character[iii][4] == true  ){		//sees if new carictoris biger 
+								
+	// 							character[most][4] = false;		//kills smaller power lv carictor
+	// 							most = iii;						//asines new bigest power lv carictor
+	// 							console.log("teast result One");
+
+	// 						}else{
+	// 							character[iii][4] = false;
+	// 							console.log("teast result two");
+
+	// 							if(character[most][0] == "@"){
+	// 								character[most][1] = character[most][1] + 1;
+	// 							}
+
+	// 						}
+	// 					}
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+
+
+	//handles colition COPY THIS IS A COPY IT IT FOR TEASTING PURPESES ONLY 
 	function doCollision(){
 		for(let i = 0; i < boardSize; i ++){
 			for(let ii = 0; ii < boardSize; ii++){
@@ -179,32 +215,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
 				let most = -500 								//index of largest thing at spt i = X ii = Y
 
-				for(let iii = 0; iii < numberOfPlayers; iii++){
+				for(let iii = 1; iii < numberOfPlayers; iii++){
+					
+					if(character[0][2] == character[iii][2] & character[0][3] == character[iii][3] & character[iii][4] == true ){
+						if(character[0][1] >= character[iii][1] ){
 
-					if ( character[iii][2] == i  &  character[iii][3] == ii & character[iii][4] == true ){	//gets first carictor in there
-						if(most == -500){				//this is so you can get first carictor in there
-							most = iii;
+							character[iii][4] = false;
+							character[0][1] = character[0][1] + 1;
+
 						}else{
-							if( character[iii][1] > character[most][1] & character[iii][4] == true  ){		//sees if new carictoris biger 
-								
-								character[most][4] = false;		//kills smaller power lv carictor
-								most = iii;						//asines new bigest power lv carictor
-								console.log("teast result One");
-
-							}else{
-								character[iii][4] = false;
-								console.log("teast result two");
-
-								if(character[most][0] == "@"){
-									character[most][1] = character[most][1] + 1;
-								}
-
-							}
+							character[0][4] = false;
 						}
 					}
+
 				}
 			}
 		}
+
 		//levles up player charictor 
 		for(let i = 0; i < numberOfPlayers; i++){
 
@@ -231,7 +258,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				}
 
 				if(tempVar == false){				//if there is not a carictor
-					board[i][ii] = "_";				//sets to defult
+					board[i][ii] = "__";				//sets to defult
 				}
 
 				//adds stuff to the vewPortForTheUserOfTheBoard 
@@ -265,12 +292,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		if(isThePlayerDead == true){
 
-			titleOfThePage.innerHTML = "YOU LOST!";
+			vewPortForTheUserOfTheBoard.innerHTML = "YOU LOST!";
 		
 		}
 
 		if(isEveryThingEalsDead == true){
-			titleOfThePage.innerHTML = "YOU WIN!";
+			vewPortForTheUserOfTheBoard.innerHTML = "YOU WIN!";
 		}
 
 	}
@@ -381,42 +408,3 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
