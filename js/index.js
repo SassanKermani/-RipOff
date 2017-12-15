@@ -166,6 +166,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					alert("it broke what did you do");
 			}
 		}
+		//so you can see what is hapaning after setup has run
 		console.log( "board ");
 		console.log( board);
 		console.log("character")
@@ -285,7 +286,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		if(isEveryThingEalsDead == true){
 			//vewPortForTheUserOfTheBoard.innerHTML = "YOU WIN!";
-			boardSize = boardSize - 2;
+			boardSize = boardSize - 2;	//it gose down by two because board will go up by one if not odd
 			setUp();
 			drawBoard();
 			level = level + 1;
