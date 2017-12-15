@@ -309,6 +309,9 @@ document.addEventListener('DOMContentLoaded', function() {
 	document.getElementById("Start").addEventListener("click", theRubeGoldbergMachine);
 
 	function theRubeGoldbergMachine(){
+
+		document.getElementById("Start").style.backgroundColor = "black";
+
 		window.addEventListener('keypress', function (e){
 
 			console.log( "e = " + e.keyCode );
