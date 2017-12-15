@@ -7,10 +7,9 @@ document.addEventListener('DOMContentLoaded', function() {
 	var numberOfPlayers = 10;
 
 	var bigStartButton = true;						//nothing works if this is false
-	//var TheNumberofTotalTurnsYouGet = 200;		killed this feture may add it back later
 
 	var level = 1;								//number of times player has beat the bard 
-	var score = 0;
+	var score = 0;								//gose up by one each thing that got ate
 
 	var vewPortForTheUserOfTheBoard = document.getElementById("mainBoard");
 
@@ -171,44 +170,10 @@ document.addEventListener('DOMContentLoaded', function() {
 		console.log(character)
 	}
 
+	
 	setUp();		//calls the funcion for seting up the game
 
-
-	//handles colition  ORIGINAL
-	// function doCollision(){
-	// 	for(let i = 0; i < boardSize; i ++){
-	// 		for(let ii = 0; ii < boardSize; ii++){
-	// 			//this is now going though everyspot 
-
-	// 			let most = -500 								//index of largest thing at spt i = X ii = Y
-
-	// 			for(let iii = 0; iii < numberOfPlayers; iii++){
-
-	// 				if ( character[iii][2] == i  &  character[iii][3] == ii & character[iii][4] == true ){	//gets first carictor in there
-	// 					if(most == -500){				//this is so you can get first carictor in there
-	// 						most = iii;
-	// 					}else{
-	// 						if( character[iii][1] > character[most][1] & character[iii][4] == true  ){		//sees if new carictoris biger 
-								
-	// 							character[most][4] = false;		//kills smaller power lv carictor
-	// 							most = iii;						//asines new bigest power lv carictor
-	// 							console.log("teast result One");
-
-	// 						}else{
-	// 							character[iii][4] = false;
-	// 							console.log("teast result two");
-
-	// 							if(character[most][0] == "@"){
-	// 								character[most][1] = character[most][1] + 1;
-	// 							}
-
-	// 						}
-	// 					}
-	// 				}
-	// 			}
-	// 		}
-	// 	}
-
+	
 
 	//handles colition COPY THIS IS A COPY IT IT FOR TEASTING PURPESES ONLY 
 	function doCollision(){
@@ -244,6 +209,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	doCollision();
 
+	
+
 	function drawBoard(){
 		vewPortForTheUserOfTheBoard.innerHTML = "";
 		for(let i = 0; i < boardSize; i++){					
@@ -275,34 +242,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		vewPortForTheUserOfTheBoard.innerHTML = vewPortForTheUserOfTheBoard.innerHTML + " <br> ";
 		vewPortForTheUserOfTheBoard.innerHTML = vewPortForTheUserOfTheBoard.innerHTML + " <br> ";
 		
-		// //winning logic puting it hear because you update the bord for everthing anyway this just makes it convenyent
-		
-		// let titleOfThePage = document.getElementById("title");
 
-		// let isThePlayerDead = false;			//is the player dead 
-		// let isEveryThingEalsDead = true;		// is Every Thing Eals Dead
-
-
-		// if( character[0][4] == false ){
-		// 	isThePlayerDead = true 				//cheacks if player is dead
-		// }
-
-		// for(let i = 1; i < numberOfPlayers; i++){
-		// 	if( character[i][4]   ==  true ){
-		// 		isEveryThingEalsDead = false;			// if one is alive there not all dead
-		// 		//console.log("ran winning logic")
-		// 	}
-		// }
-
-		// if(isThePlayerDead == true){
-
-		// 	vewPortForTheUserOfTheBoard.innerHTML = "YOU LOST!";
-		
-		// }
-
-		// if(isEveryThingEalsDead == true){
-		// 	vewPortForTheUserOfTheBoard.innerHTML = "YOU WIN!";
-		// }
 
 		winningLogic();
 
@@ -311,8 +251,9 @@ document.addEventListener('DOMContentLoaded', function() {
 	drawBoard();
 
 
+	
+	//winning logic
 	function winningLogic(){
-		//winning logic puting it hear because you update the bord for everthing anyway this just makes it convenyent
 		
 		let titleOfThePage = document.getElementById("title");
 
@@ -339,6 +280,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		if(isEveryThingEalsDead == true){
 			//vewPortForTheUserOfTheBoard.innerHTML = "YOU WIN!";
+			boardSize = boardSize - 2;
 			setUp();
 			drawBoard();
 			level = level + 1;
@@ -346,27 +288,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	}
 
-
-
-	//killed this feture it was taking to long i got a time table to keep might come back later for it
-	// document.getElementById("Start").addEventListener("click", theRubeGoldbergMachine);
-
-	// function theRubeGoldbergMachine(){
-
-	// 	for(let i = 0; i < TheNumberofTotalTurnsYouGet; i++){
-	// 		setTimeout( moveThings, 3000);
-	// 	}
-
-	// }
-	
-	// function moveThings(){
-	// 	window.addEventListener('keypress', function (e){
-	// 		console.log("e keycode = " + e.keycode );
-
-
-
-	// 	})
-	// }
 
 
 	//the engine of the dam thing
