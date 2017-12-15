@@ -9,6 +9,9 @@
 	background-color: skyblue;
 }
 
+p{
+	margin: 2%;
+}
 
 #mainBoard{
 	font-size: 1em;
