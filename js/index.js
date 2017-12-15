@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					character[i][1] = 2;									//car power lv to kill other cars
 					character[i][2] = Math.floor(boardSize - 1);		//car position on the x axes
 					character[i][3] = Math.floor(0);			//car position on the y axes
-					character[i][4] = false;//true;									//car if alive or not 
+					character[i][4] = true;									//car if alive or not 
 
 					console.log("case " + i );
 					break;
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					character[i][1] = 3;									//car power lv to kill other cars
 					character[i][2] = Math.floor(boardSize - 1);		//car position on the x axes
 					character[i][3] = Math.floor(boardSize - 1);		//car position on the y axes
-					character[i][4] = false;//true;									//car if alive or not 
+					character[i][4] = true;									//car if alive or not 
 
 					console.log("case " + i );
 					break;
@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					character[i][1] = 4;									//car power lv to kill other cars
 					character[i][2] = Math.floor(boardSize / 2);			//car position on the x axes
 					character[i][3] = 0;									//car position on the y axes
-					character[i][4] = false;//true;									//car if alive or not 
+					character[i][4] = true;									//car if alive or not 
 
 					console.log("case " + i );
 					break;
@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					character[i][1] = 5;									//car power lv to kill other cars
 					character[i][2] = 0;									//car position on the x axes
 					character[i][3] = Math.floor(boardSize / 2);							//car position on the y axes
-					character[i][4] = false;//true;									//car if alive or not 
+					character[i][4] = true;									//car if alive or not 
 
 					console.log("case " + i );
 					break;
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					character[i][1] = 6;									//car power lv to kill other cars
 					character[i][2] = Math.floor(boardSize / 2);									//car position on the x axes
 					character[i][3] = Math.floor(boardSize - 1);		//car position on the y axes
-					character[i][4] = false;//true;									//car if alive or not 
+					character[i][4] = true;									//car if alive or not 
 
 					console.log("case " + i );
 					break;
@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					character[i][1] = 7;									//car power lv to kill other cars
 					character[i][2] = Math.floor(boardSize - 1);;						//car position on the x axes
 					character[i][3] = Math.floor(boardSize / 2);						//car position on the y axes
-					character[i][4] = false;//true;									//car if alive or not 
+					character[i][4] = true;									//car if alive or not 
 
 					console.log("case " + i );
 					break;
