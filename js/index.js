@@ -333,7 +333,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		if(isThePlayerDead == true){
 
-			vewPortForTheUserOfTheBoard.innerHTML = "YOU LOST! <br> you where at Level " + level + "<br> Your socre is "+ score;
+			vewPortForTheUserOfTheBoard.innerHTML = "YOU LOST! <br> <br> you where at level " + level +  "<br> <br> Your socre was "+ score;
 		
 		}
 
