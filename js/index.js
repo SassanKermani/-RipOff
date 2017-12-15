@@ -294,6 +294,16 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 
 
+	//starting the game wouthout a click
+	window.addEventListener('keypress', function(ee){
+		
+		console.log("keypress " + ee.keyCode );
+
+		if( ee.keyCode == 103 ){
+			theRubeGoldbergMachine();
+		}
+	});
+
 
 	//the engine of the dam thing
 	document.getElementById("Start").addEventListener("click", theRubeGoldbergMachine);
