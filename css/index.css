@@ -17,6 +17,15 @@ p{
 	font-size: 1em;
 }
 
+a{
+	width: 20%;
+	display: block;
+	text-decoration: none;
+	color: black;
+	border-radius: 5%;
+	border: solid 2px black;
+}
+
 @media only screen and (max-width: 700px){
 	#mainBoard{
 		font-size: 10px;
