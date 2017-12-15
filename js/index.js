@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	var level = 1;								//number of times player has beat the bard 
 	var score = 0;								//gose up by one each thing that got ate
 
+	
+
 	var vewPortForTheUserOfTheBoard = document.getElementById("mainBoard");
 
 	function setUp(){
@@ -185,15 +187,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
 				for(let iii = 1; iii < numberOfPlayers; iii++){
 					
+					//only trigers if player and non player are in same spot and non player is alive
 					if(character[0][2] == character[iii][2] & character[0][3] == character[iii][3] & character[iii][4] == true ){
 						if(character[0][1] >= character[iii][1] ){
 
-							character[iii][4] = false;
-							character[0][1] = character[0][1] + 1;
-							score = score + 1;  
+							character[iii][4] = false;				//kills non player
+							character[0][1] = character[0][1] + 1;	//levales up the plyaer
+							score = score + 1;  					//gives player a point
 
 						}else{
-							character[0][4] = false;
+							character[0][4] = false;				//kills player
 						}
 					}
 
@@ -207,10 +210,10 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 	}
 
-	doCollision();
+	doCollision();		//calls onishily both as a teast and to kill make shure set up id sone safly
 
 	
-
+	//draws the board
 	function drawBoard(){
 		vewPortForTheUserOfTheBoard.innerHTML = "";
 		for(let i = 0; i < boardSize; i++){					
@@ -238,6 +241,8 @@ document.addEventListener('DOMContentLoaded', function() {
 			}
 			vewPortForTheUserOfTheBoard.innerHTML = vewPortForTheUserOfTheBoard.innerHTML + " <br> ";
 		}
+
+		//for spacing
 		vewPortForTheUserOfTheBoard.innerHTML = vewPortForTheUserOfTheBoard.innerHTML + " <br> ";
 		vewPortForTheUserOfTheBoard.innerHTML = vewPortForTheUserOfTheBoard.innerHTML + " <br> ";
 		vewPortForTheUserOfTheBoard.innerHTML = vewPortForTheUserOfTheBoard.innerHTML + " <br> ";
@@ -274,7 +279,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		if(isThePlayerDead == true){
 
-			vewPortForTheUserOfTheBoard.innerHTML = "YOU LOST! <br> <br> you where at level " + level +  "<br> <br> Your socre was "+ score;
+			vewPortForTheUserOfTheBoard.innerHTML = "YOU LOST! <br> <br> you where at level " + level +  "<br> <br> Your score was "+ score;
 		
 		}
 
@@ -370,6 +375,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			}
 		}
 	};
+
 
 
 });
