@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	var bigStartButton = true;						//nothing works if this is false
 	//var TheNumberofTotalTurnsYouGet = 200;		killed this feture may add it back later
 
+	var level = 1;								//number of times player has beat the bard 
+
 	var vewPortForTheUserOfTheBoard = document.getElementById("mainBoard");
 
 	function setUp(){
@@ -74,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					character[i][1] = 2;									//car power lv to kill other cars
 					character[i][2] = Math.floor(boardSize - 1);		//car position on the x axes
 					character[i][3] = Math.floor(0);			//car position on the y axes
-					character[i][4] = true;									//car if alive or not 
+					character[i][4] = false;//true;									//car if alive or not 
 
 					console.log("case " + i );
 					break;
@@ -85,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					character[i][1] = 3;									//car power lv to kill other cars
 					character[i][2] = Math.floor(boardSize - 1);		//car position on the x axes
 					character[i][3] = Math.floor(boardSize - 1);		//car position on the y axes
-					character[i][4] = true;									//car if alive or not 
+					character[i][4] = false;//true;									//car if alive or not 
 
 					console.log("case " + i );
 					break;
@@ -96,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					character[i][1] = 4;									//car power lv to kill other cars
 					character[i][2] = Math.floor(boardSize / 2);			//car position on the x axes
 					character[i][3] = 0;									//car position on the y axes
-					character[i][4] = true;									//car if alive or not 
+					character[i][4] = false;//true;									//car if alive or not 
 
 					console.log("case " + i );
 					break;
@@ -107,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					character[i][1] = 5;									//car power lv to kill other cars
 					character[i][2] = 0;									//car position on the x axes
 					character[i][3] = Math.floor(boardSize / 2);							//car position on the y axes
-					character[i][4] = true;									//car if alive or not 
+					character[i][4] = false;//true;									//car if alive or not 
 
 					console.log("case " + i );
 					break;
@@ -119,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					character[i][1] = 6;									//car power lv to kill other cars
 					character[i][2] = Math.floor(boardSize / 2);									//car position on the x axes
 					character[i][3] = Math.floor(boardSize - 1);		//car position on the y axes
-					character[i][4] = true;									//car if alive or not 
+					character[i][4] = false;//true;									//car if alive or not 
 
 					console.log("case " + i );
 					break;
@@ -130,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					character[i][1] = 7;									//car power lv to kill other cars
 					character[i][2] = Math.floor(boardSize - 1);;						//car position on the x axes
 					character[i][3] = Math.floor(boardSize / 2);						//car position on the y axes
-					character[i][4] = true;									//car if alive or not 
+					character[i][4] = false;//true;									//car if alive or not 
 
 					console.log("case " + i );
 					break;
@@ -271,6 +273,43 @@ document.addEventListener('DOMContentLoaded', function() {
 		vewPortForTheUserOfTheBoard.innerHTML = vewPortForTheUserOfTheBoard.innerHTML + " <br> ";
 		vewPortForTheUserOfTheBoard.innerHTML = vewPortForTheUserOfTheBoard.innerHTML + " <br> ";
 		
+		// //winning logic puting it hear because you update the bord for everthing anyway this just makes it convenyent
+		
+		// let titleOfThePage = document.getElementById("title");
+
+		// let isThePlayerDead = false;			//is the player dead 
+		// let isEveryThingEalsDead = true;		// is Every Thing Eals Dead
+
+
+		// if( character[0][4] == false ){
+		// 	isThePlayerDead = true 				//cheacks if player is dead
+		// }
+
+		// for(let i = 1; i < numberOfPlayers; i++){
+		// 	if( character[i][4]   ==  true ){
+		// 		isEveryThingEalsDead = false;			// if one is alive there not all dead
+		// 		//console.log("ran winning logic")
+		// 	}
+		// }
+
+		// if(isThePlayerDead == true){
+
+		// 	vewPortForTheUserOfTheBoard.innerHTML = "YOU LOST!";
+		
+		// }
+
+		// if(isEveryThingEalsDead == true){
+		// 	vewPortForTheUserOfTheBoard.innerHTML = "YOU WIN!";
+		// }
+
+		winningLogic();
+
+	}
+
+	drawBoard();
+
+
+	function winningLogic(){
 		//winning logic puting it hear because you update the bord for everthing anyway this just makes it convenyent
 		
 		let titleOfThePage = document.getElementById("title");
@@ -292,17 +331,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		if(isThePlayerDead == true){
 
-			vewPortForTheUserOfTheBoard.innerHTML = "YOU LOST!";
+			vewPortForTheUserOfTheBoard.innerHTML = "YOU LOST! <br> you where at Level " + level;
 		
 		}
 
 		if(isEveryThingEalsDead == true){
-			vewPortForTheUserOfTheBoard.innerHTML = "YOU WIN!";
+			//vewPortForTheUserOfTheBoard.innerHTML = "YOU WIN!";
+			setUp();
+			drawBoard();
+			level = level + 1;
 		}
 
 	}
 
-	drawBoard();
+
 
 	//killed this feture it was taking to long i got a time table to keep might come back later for it
 	// document.getElementById("Start").addEventListener("click", theRubeGoldbergMachine);
