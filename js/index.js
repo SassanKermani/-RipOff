@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	//var TheNumberofTotalTurnsYouGet = 200;		killed this feture may add it back later
 
 	var level = 1;								//number of times player has beat the bard 
+	var score = 0;
 
 	var vewPortForTheUserOfTheBoard = document.getElementById("mainBoard");
 
@@ -224,6 +225,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 							character[iii][4] = false;
 							character[0][1] = character[0][1] + 1;
+							score = score + 1;  
 
 						}else{
 							character[0][4] = false;
@@ -331,7 +333,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		if(isThePlayerDead == true){
 
-			vewPortForTheUserOfTheBoard.innerHTML = "YOU LOST! <br> you where at Level " + level;
+			vewPortForTheUserOfTheBoard.innerHTML = "YOU LOST! <br> you where at Level " + level + "<br> Your socre is "+ score;
 		
 		}
 
