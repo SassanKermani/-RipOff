@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-	boardSize = 30;				//for the love of god make this nubmer odd
+	boardSizeOG = 30;						//for the love of god make this nubmer odd
+	boardSize = boardSizeOG;				//this changes with the level
 	board = [];
 	
 	var character = [];
@@ -250,7 +251,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		
 
 
-		winningLogic();
+		//winningLogic();
 
 	}
 
@@ -289,6 +290,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			boardSize = boardSize - 2;	//it gose down by two because board will go up by one if not odd
 			setUp();
 			drawBoard();
+			winningLogic();
 			level = level + 1;
 		}
 
@@ -324,6 +326,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 				doCollision();
 				drawBoard();
+				winningLogic();
 				console.log(board);
 			}
 
@@ -333,6 +336,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 				doCollision();
 				drawBoard();
+				winningLogic();
 				console.log(board);
 			}
 
@@ -343,6 +347,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 				doCollision();
 				drawBoard();
+				winningLogic();
 				console.log(board);
 			}
 
@@ -352,6 +357,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 				doCollision();
 				drawBoard();
+				winningLogic();
 				console.log(board);
 			}
 
@@ -363,24 +369,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	function aiOfTheNonPlayerPices(){
 		
-		for( let i = 1; i < numberOfPlayers; i++ ){
-			if( character[0][1] < character[i][1] ){
+		for( let i = 1; i < numberOfPlayers; i++ ){		//gose though all palyers
+			if( character[0][1] < character[i][1] ){	//only stronger things have this ai	
 
-				if( Math.floor((Math.random() * 2) + 1) == 1 ){
+				if( Math.floor((Math.random() * 2) + 1) == 1 ){		//random for moving on x or y
 
-					if( character[0][2] > character[i][2] ){
+					if( character[0][2] > character[i][2] ){		//moves on x down
 						character[i][2] = character[i][2] + 1;
 					}
-					if( character[0][2] < character[i][2] ){
+					if( character[0][2] < character[i][2] ){		//moves on x up
 						character[i][2] = character[i][2] - 1;
 					}
 
 				}else{
 
-					if( character[0][3] > character[i][3] ){
+					if( character[0][3] > character[i][3] ){		//moves on y down
 						character[i][3] = character[i][3] + 1;
 					}
-					if( character[0][3] < character[i][3] ){
+					if( character[0][3] < character[i][3] ){		//moves on y up
 						character[i][3] = character[i][3] - 1;
 					}
 
@@ -390,6 +396,17 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 	};
 
+	//document.getElementById("aBetterLink").addEventListener("click", setUpNewGame);
 
+
+	// killing this feture for the prsentation
+	// function setUpNewGame(){
+	// 	console.log(" setUpNewGame ");
+	// 	setUp();
+	// 	drawBoard();
+	// 	boardSize = boardSizeOG;
+	// 	level = 1;
+	// 	score = 0;
+	// }
 
 });
