@@ -4,7 +4,7 @@
 
 [lnk to the game](https://sassankermani.github.io/-RipOff/)
 
-![pic of my wirefream](https://github.com/SassanKermani/-RipOff/blob/master/img/wireFram.jpg)
+![pic of my wirefream](https://github.com/SassanKermani/-RipOff/blob/master/img/IMG_0097.jpg)
 
 [Technologies used:]
 [java sctit]
