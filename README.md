@@ -15,9 +15,9 @@
 [move over 0 - 9 in ascending order use wasd to move. press g or hit start to start]
 
 ### technology used
--js
--html
--css 
+*js
+*html
+*css 
 
 ### how to play
 you play as the @ symble you need to eat 0-9 in asending order.
